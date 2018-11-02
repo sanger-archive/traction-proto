@@ -1,17 +1,21 @@
 <template>
   <div class="library-list">
-    <table>
+    <table class="table table-striped">
       <thead>
-        <th>Name</th>
-        <th>Species</th>
+        <tr>
+          <th>Name</th>
+          <th>Species</th>
+        </tr>
       </thead>
       <tbody>
-        <draggable v-model="libraries" @start="drag=true" @end="onEnd" >
-           <tr v-for="library in libraries" v-bind:key="library.id">
-            <td>{{ library.name}}</td>
-            <td>{{ library.species}}</td>
+        <tr v-for="library in libraries" v-bind:key="library.id">
+            <td>
+              <draggable v-model="libraries" @start="drag=true" @end="onEnd" >
+                <div>{{ library.name}}</div>
+              </draggable>
+            </td>
+            <td>{{ library.species }}</td>
           </tr>
-        </draggable>
       </tbody>
     </table>
   </div>
@@ -38,7 +42,7 @@ export default {
       console.log(event)
     },
     onEnd (event, originalEvent) {
-      event.explicitOriginalTarget.innerHTML = event.clone.firstChild.innerHTML
+      event.explicitOriginalTarget.innerHTML = event.clone.innerHTML
     }
   },
   computed: {
@@ -57,4 +61,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .library-list {
+    margin-left: 200px;
+    width: 300px;
+  }
 </style>

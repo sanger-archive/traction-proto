@@ -59,7 +59,10 @@ export default {
   #container {
     width: 450px;
     height: 450px;
-    margin: auto;
+    position: absolute;
+    top: 75px;
+    left: 700px;
+    // margin: auto;
   }
   #chip {
     display: flex;
