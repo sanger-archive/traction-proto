@@ -8,7 +8,7 @@
         <th>Species</th>
       </thead>
       <tbody>
-        <sample v-for="sample in pendingSamples" v-bind:key="sample.id" v-bind="sample"></sample>
+        <sample v-for="sample in samples" v-bind:key="sample.id" v-bind="sample"></sample>
       </tbody>
     </table>
     <div id="uploadbutton">
@@ -26,7 +26,6 @@ export default {
   name: 'Reception',
   data () {
     return {
-      samples: []
     }
   },
   components: {
@@ -34,29 +33,24 @@ export default {
   },
   methods: {
     upload () {
-      let samplesToUpload = this.$children.filter(s => s.selected === true)
-      for (let s of samplesToUpload) {
-        s.status = 'started'
-        localStorage.setItem(s.id, JSON.stringify(s.json))
-      }
+      this.$children.filter(sample => sample.selected === true).forEach((sample) => {
+        this.$store.commit('startSample',sample.id)
+      })
     }
   },
   computed: {
-    pendingSamples () {
-      return Object.values(localStorage).map(s => JSON.parse(s)).filter(s => s.status === 'pending')
+    samples () {
+      return this.$store.getters.samples.filter(sample => sample.status === 'pending')
     }
   },
   created () {
-    axios
-      .get('http://localhost:3000/samples/')
-      .then(response => {
-        for (let sample of response.data) {
-          if (localStorage.getItem(sample.id === undefined)) {
-            localStorage.setItem(sample.id, JSON.stringify(sample))
-          }
+    if (this.$store.getters.samples.length === 0) {
+      axios.get('http://localhost:3000/samples/')
+        .then(response => {
+          this.$store.commit('createSamples', response.data)
         }
-      }
-      )
+        )
+    }
   }
 }
 

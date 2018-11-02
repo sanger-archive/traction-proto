@@ -4,6 +4,7 @@
     <td>{{ id }}</td>
     <td>{{ name }}</td>
     <td>{{ species }}</td>
+    <td>{{ status }}</td>
   </tr>
 </template>
 
@@ -14,7 +15,8 @@ export default {
   props: [
     'id',
     'name',
-    'species'
+    'species',
+    'status'
   ],
   data () {
     return {

@@ -62,7 +62,6 @@ export default {
     position: absolute;
     top: 75px;
     left: 700px;
-    // margin: auto;
   }
   #chip {
     display: flex;
