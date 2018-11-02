@@ -3,6 +3,7 @@
     <div id="nav">
       <router-link to="/reception">Reception</router-link> |
       <router-link to="/samples">Samples</router-link> |
+      <router-link to="/sequencing-run">Sequencing Run</router-link> |
     </div>
     <router-view/>
   </div>

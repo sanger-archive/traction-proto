@@ -18,8 +18,7 @@ export default {
   ],
   data () {
     return {
-      'selected': false,
-      'state': 'started'
+      'selected': false
     }
   },
   computed: {
@@ -28,7 +27,7 @@ export default {
         id: this.id,
         name: this.name,
         species: this.species,
-        state: this.state
+        status: this.status
       }
     }
   }

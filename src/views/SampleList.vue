@@ -29,10 +29,11 @@ export default {
     Sample
   },
   created () {
-    let samplesIds = Object.keys(localStorage).filter(i => i !== 'loglevel:webpack-dev-server')
-    for (let id of samplesIds) {
-      this.samples.push(JSON.parse(localStorage[id]))
-    }
+    this.samples = Object.values(localStorage).map(s => JSON.parse(s)).filter(s => s.status === 'started')
+    // let samplesIds = Object.keys(localStorage).filter(i => i !== 'loglevel:webpack-dev-server')
+    // for (let id of samplesIds) {
+    //   this.samples.push(JSON.parse(localStorage[id]))
+    // }
   }
 }
 </script>

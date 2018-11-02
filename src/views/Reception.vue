@@ -8,7 +8,7 @@
         <th>Species</th>
       </thead>
       <tbody>
-        <sample v-for="sample in samples" v-bind:key="sample.id" v-bind="sample"></sample>
+        <sample v-for="sample in pendingSamples" v-bind:key="sample.id" v-bind="sample"></sample>
       </tbody>
     </table>
     <div id="uploadbutton">
@@ -36,15 +36,25 @@ export default {
     upload () {
       let samplesToUpload = this.$children.filter(s => s.selected === true)
       for (let s of samplesToUpload) {
+        s.status = 'started'
         localStorage.setItem(s.id, JSON.stringify(s.json))
       }
     }
   },
-  mounted () {
+  computed: {
+    pendingSamples () {
+      return Object.values(localStorage).map(s => JSON.parse(s)).filter(s => s.status === 'pending')
+    }
+  },
+  created () {
     axios
       .get('http://localhost:3000/samples/')
       .then(response => {
-        this.samples = response.data
+        for (let sample of response.data) {
+          if (localStorage.getItem(sample.id === undefined)) {
+            localStorage.setItem(sample.id, JSON.stringify(sample))
+          }
+        }
       }
       )
   }
