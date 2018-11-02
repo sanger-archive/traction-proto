@@ -5,11 +5,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    samples: []
+    samples: [],
+    libraries: []
   },
   getters: {
     samples: state => {
       return state.samples
+    },
+    libraries: state => {
+      return state.libraries
+    },
+    libraryCount: state => {
+      return state.libraries.length
     }
   },
   mutations: {
@@ -18,6 +25,9 @@ export default new Vuex.Store({
     },
     startSample (state, id) {
       state.samples.find(sample => sample.id === id).status = 'started'
+    },
+    createLibrary (state, library) {
+      state.libraries.push(library)
     }
   },
   actions: {

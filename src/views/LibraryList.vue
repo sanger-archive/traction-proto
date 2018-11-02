@@ -3,12 +3,14 @@
     <table class="table table-striped">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Name</th>
           <th>Species</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="library in libraries" v-bind:key="library.id">
+          <td> {{ library.id }}</td>
             <td>
               <draggable v-model="libraries" @start="drag=true" @end="onEnd" >
                 <div>{{ library.name}}</div>
@@ -31,7 +33,11 @@ export default {
   name: 'LibraryList',
   data () {
     return {
-      libraries: []
+    }
+  },
+  computed: {
+    libraries () {
+      return this.$store.getters.libraries
     }
   },
   components: {
@@ -45,15 +51,12 @@ export default {
       event.explicitOriginalTarget.innerHTML = event.clone.innerHTML
     }
   },
-  computed: {
-  
-  },
   created () {
     axios
       .get('http://localhost:3000/libraries/')
       .then(response => {
         this.libraries = response.data
-        }
+      }
       )
   }
 }
