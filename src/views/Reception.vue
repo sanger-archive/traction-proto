@@ -1,11 +1,14 @@
 <template>
   <div class="reception">
-    <table>
+    <table class="table table-striped">
       <thead>
-        <th></th>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Species</th>
+        <tr>
+          <th>&nbsp;</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Species</th>
+          <th>Status</th>
+        </tr>
       </thead>
       <tbody>
         <sample v-for="sample in samples" v-bind:key="sample.id" v-bind="sample"></sample>

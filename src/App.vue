@@ -1,10 +1,14 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/reception">Reception</router-link> |
-      <router-link to="/samples">Samples</router-link> |
-      <router-link to="/sequencing-run">Sequencing Run</router-link> |
-    </div>
+    <nav>
+      <div>Traction</div>
+        <ul>
+          <router-link tag="b-nav-item" to="/reception"><a>Reception</a></router-link> |
+          <router-link tag="b-nav-item" to="/samples"><a>Samples</a></router-link> |
+          <router-link tag="b-nav-item" to="/libraries"><a>Libraries</a></router-link> |
+          <router-link tag="b-nav-item" to="/sequencing-run"><a>Sequencing Run</a></router-link>
+        </ul>
+    </nav>
     <router-view/>
   </div>
 </template>
@@ -14,17 +18,22 @@
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+nav {
+  height: 30px;
+  width: 100%;
+  margin-bottom: 10px;
+
+  ul {
+    float: right;
+    margin-top: -20px;
+    list-style-type: none;
+
+    li {
+      display: inline-block;
     }
   }
 }
+
 </style>

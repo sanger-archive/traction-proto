@@ -1,12 +1,12 @@
 <template>
   <div class="samples">
-    <table>
+    <table class="table table-striped" >
       <thead>
-        <th></th>
+        <th>&nbsp;</th>
         <th>ID</th>
         <th>Name</th>
         <th>Species</th>
-        <th>State</th>
+        <th>Status</th>
       </thead>
       <tbody>
         <sample v-for="sample in samples" v-bind:key="sample.id" v-bind="sample"></sample>
@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     samples () {
-      return this.$store.getters.samples
+      return this.$store.getters.samples.filter(sample => sample.status === 'started')
     }
   },
   methods: {

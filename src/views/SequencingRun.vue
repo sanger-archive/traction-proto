@@ -44,6 +44,9 @@ export default {
   methods: {
   },
   computed: {
+    samples () {
+      return this.$store.getters.libraries
+    }
   },
   created () {
   }

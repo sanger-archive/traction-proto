@@ -64,8 +64,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .library-list {
-    margin-left: 200px;
-    width: 300px;
-  }
+  // .library-list {
+  //   margin-left: 200px;
+  //   width: 300px;
+  // }
 </style>
