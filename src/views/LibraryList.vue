@@ -44,20 +44,11 @@ export default {
     draggable
   },
   methods: {
-    moveLibraries (event) {
-      console.log(event)
-    },
     onEnd (event, originalEvent) {
       event.explicitOriginalTarget.innerHTML = event.clone.innerHTML
     }
   },
   created () {
-    axios
-      .get('http://localhost:3000/libraries/')
-      .then(response => {
-        this.libraries = response.data
-      }
-      )
   }
 }
 

@@ -5,12 +5,5 @@
     { "id": 3, "name": "DN11113", "species": "cat", "status": "pending" },
     { "id": 4, "name": "DN11114", "species": "cat", "status": "pending" },
     { "id": 5, "name": "DN11115", "species": "dog", "status": "pending" }
-  ],
-   "libraries": [
-    { "id": 1, "name": "DN11111", "species": "cat" },
-    { "id": 2, "name": "DN11112", "species": "dog" },
-    { "id": 3, "name": "DN11113", "species": "cat" },
-    { "id": 4, "name": "DN11114", "species": "cat" },
-    { "id": 5, "name": "DN11115", "species": "dog" }
   ]
 }
