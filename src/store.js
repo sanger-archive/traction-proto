@@ -17,6 +17,9 @@ export default new Vuex.Store({
     },
     libraryCount: state => {
       return state.libraries.length
+    },
+    sequencingRuns: state => {
+      return state.sequencingRuns
     }
   },
   mutations: {
@@ -28,6 +31,9 @@ export default new Vuex.Store({
     },
     createLibrary (state, library) {
       state.libraries.push(library)
+    },
+    createSequencingRun (state, flowcells) {
+      state.sequencingRuns.push({id: state.sequencingRuns.length + 1, flowcells: flowcells})
     }
   },
   actions: {

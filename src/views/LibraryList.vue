@@ -4,20 +4,13 @@
       <thead>
         <tr>
           <th>ID</th>
+          <th>Sample ID</th>
           <th>Name</th>
           <th>Species</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="library in libraries" v-bind:key="library.id">
-          <td> {{ library.id }}</td>
-            <td>
-              <draggable v-model="libraries" @start="drag=true" @end="onEnd" >
-                <div>{{ library.name}}</div>
-              </draggable>
-            </td>
-            <td>{{ library.species }}</td>
-          </tr>
+        <library v-for="library in libraries" v-bind:key="library.id" v-bind="library"></library>
       </tbody>
     </table>
   </div>
@@ -26,8 +19,7 @@
 
 <script>
 
-import axios from 'axios'
-import draggable from 'vuedraggable'
+import Library from '@/views/Library'
 
 export default {
   name: 'LibraryList',
@@ -41,12 +33,9 @@ export default {
     }
   },
   components: {
-    draggable
+    Library
   },
   methods: {
-    onEnd (event, originalEvent) {
-      event.explicitOriginalTarget.innerHTML = event.clone.innerHTML
-    }
   },
   created () {
   }
@@ -55,8 +44,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  // .library-list {
-  //   margin-left: 200px;
-  //   width: 300px;
-  // }
 </style>

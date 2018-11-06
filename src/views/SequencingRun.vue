@@ -4,22 +4,11 @@
       <div id="container">
         <div class="header">CHIP1234567</div>
         <div id="chip">
-          <draggable>
-            <div class="flowcell">
-              1
-              <div class="drop">
-                drop
-              </div>
-            </div>
-          </draggable>
-          <draggable>
-           <div class="flowcell">
-            2
-            <div class="drop">
-              drop
-            </div>
-          </div>
-          </draggable>
+          <flowcell v-bind:position="1"></flowcell>
+          <flowcell v-bind:position="2"></flowcell>
+        </div>
+        <div>
+          <button @click="createSequencingRun">Create</button>
         </div>
       </div>
   </div>
@@ -30,6 +19,7 @@
 
 import LibraryList from '@/views/LibraryList'
 import draggable from 'vuedraggable'
+import Flowcell from '@/views/Flowcell'
 
 export default {
   name: 'SequencingRun',
@@ -39,9 +29,13 @@ export default {
   },
   components: {
     LibraryList,
-    draggable
+    draggable,
+    Flowcell
   },
   methods: {
+    createSequencingRun () {
+      
+    }
   },
   computed: {
     samples () {
@@ -75,13 +69,8 @@ export default {
     justify-content: center;
     align-items: center;
   }
-  .flowcell {
-    width: 200px;
-    height: 400px;
-    border: 1px solid;
-  }
-  .drop {
-    margin-top: 150px;
-    text-align: center;
+  .library-list {
+    margin-left: 200px;
+    width: 300px;
   }
 </style>

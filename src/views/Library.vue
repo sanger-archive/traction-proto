@@ -1,20 +1,25 @@
 <template>
-  <tr>
-    <td><input type="checkbox" id="checkbox" v-model="selected"></td>
-    <td>{{ id }}</td>
-    <td>{{ name }}</td>
-    <td>{{ species }}</td>
-    <td>{{ status }}</td>
-  </tr>
+  <draggable @end="onEnd">
+    <tr>
+      <td><input type="checkbox" id="checkbox" v-model="selected"></td>
+      <td class="id">{{ id }}</td>
+      <td class="sampleId">{{ sampleId }}</td>
+      <td class="name">{{ name }}</td>
+      <td class="species">{{ species }}</td>
+      <td class="status">{{ status }}</td>
+    </tr>
+  </draggable>
 </template>
 
 <script>
+
+import draggable from 'vuedraggable'
 
 export default {
   name: 'Sample',
   props: [
     'id',
-    'sampleId'
+    'sampleId',
     'name',
     'species',
     'status'
@@ -25,13 +30,17 @@ export default {
     }
   },
   computed: {
-    json () {
-      return {
-        id: this.id,
-        name: this.name,
-        species: this.species,
-        status: this.status
-      }
+  },
+  components: {
+    draggable
+  },
+  methods: {
+     onEnd (event, originalEvent) {
+      event.explicitOriginalTarget.getElementsByClassName('id')[0].innerHTML = event.clone.getElementsByClassName('id')[0].innerHTML
+      event.explicitOriginalTarget.getElementsByClassName('sampleId')[0].innerHTML = event.clone.getElementsByClassName('sampleId')[0].innerHTML
+      event.explicitOriginalTarget.getElementsByClassName('name')[0].innerHTML = event.clone.getElementsByClassName('name')[0].innerHTML
+      event.explicitOriginalTarget.getElementsByClassName('species')[0].innerHTML = event.clone.getElementsByClassName('species')[0].innerHTML
+    
     }
   }
 }
