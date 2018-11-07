@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     samples: [],
-    libraries: []
+    libraries: [],
+    sequencingRuns: []
   },
   getters: {
     samples: state => {
@@ -32,8 +33,13 @@ export default new Vuex.Store({
     createLibrary (state, library) {
       state.libraries.push(library)
     },
-    createSequencingRun (state, flowcells) {
-      state.sequencingRuns.push({id: state.sequencingRuns.length + 1, flowcells: flowcells})
+    deleteLibrary (state, id) {
+      let library = state.libraries.find(library => library.id === id)
+      let index = state.libraries.indexOf(library)
+      state.libraries.splice(index, 1)
+    },
+    createSequencingRun (state, data) {
+      state.sequencingRuns.push({ id: state.sequencingRuns.length + 1, ...data })
     }
   },
   actions: {

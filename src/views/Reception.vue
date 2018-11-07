@@ -36,9 +36,12 @@ export default {
   },
   methods: {
     upload () {
+      let samplesUploaded = []
       this.$children.filter(sample => sample.selected === true).forEach((sample) => {
-        this.$store.commit('startSample',sample.id)
+        this.$store.commit('startSample', sample.id)
+        samplesUploaded.push(sample.name)
       })
+      alert(`Successful\n\nsamples ${samplesUploaded.join(',')} have been uploaded successfully`)
     }
   },
   computed: {

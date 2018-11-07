@@ -13,6 +13,8 @@
         <library v-for="library in libraries" v-bind:key="library.id" v-bind="library"></library>
       </tbody>
     </table>
+    <button @click="printBarcodes">Print Barcodes</button>
+    <button id="deleteLibraryButton" @click="deleteLibraries">Delete Libraries</button>
   </div>
 
 </template>
@@ -36,6 +38,19 @@ export default {
     Library
   },
   methods: {
+    printBarcodes () {
+      let libraries = this.$children.filter(library => library.selected).map(library => library.name)
+      alert(`Printing barcodes for libraries ${libraries.join(',')}`)
+    },
+    deleteLibraries () {
+      let librarySampleNames = []
+      this.$children.filter(library => library.selected).forEach((library) => {
+        this.$store.commit('deleteLibrary', library.id)
+        librarySampleNames.push(library.name)
+      })
+
+      alert(`Delete libraries ${librarySampleNames.join(',')}`)
+    }
   },
   created () {
   }
@@ -44,4 +59,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 </style>

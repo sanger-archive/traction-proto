@@ -37,16 +37,16 @@ export default {
     }
   },
   methods: {
-    getData() {
+    getData () {
       return {
         position: this.position,
         id: document.getElementsByClassName('id')[0].innerHTML,
         sampleId: document.getElementsByClassName('sampleId')[0].innerHTML,
         name: document.getElementsByClassName('name')[0].innerHTML,
-        species: document.getElementsByClassName('species')[0].innerHTML,
+        species: document.getElementsByClassName('species')[0].innerHTML
       }
     }
-  }
+  },
   computed: {
   },
   components: {

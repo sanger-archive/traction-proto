@@ -4,7 +4,8 @@ import Home from './views/Home.vue'
 import Reception from '@/views/Reception.vue'
 import SampleList from '@/views/SampleList.vue'
 import LibraryList from '@/views/LibraryList.vue'
-import SequencingRun from '@/views/SequencingRun.vue'
+import SequencingRunList from '@/views/SequencingRunList.vue'
+import BuildSequencingRun from '@/views/BuildSequencingRun.vue'
 
 Vue.use(Router)
 
@@ -30,10 +31,15 @@ export default new Router({
       name: 'libraries',
       component: LibraryList
     },
-      {
+    {
       path: '/sequencing-run',
-      name: 'sequencing-run',
-      component: SequencingRun
+      name: 'sequencing-runs',
+      component: SequencingRunList
+    },
+    {
+      path: '/build-sequencing-run',
+      name: 'build-sequencing-run',
+      component: BuildSequencingRun
     }
   ]
 })

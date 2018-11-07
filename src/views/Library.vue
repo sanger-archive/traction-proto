@@ -35,16 +35,17 @@ export default {
     draggable
   },
   methods: {
-     onEnd (event, originalEvent) {
+    onEnd (event, originalEvent) {
       event.explicitOriginalTarget.getElementsByClassName('id')[0].innerHTML = event.clone.getElementsByClassName('id')[0].innerHTML
       event.explicitOriginalTarget.getElementsByClassName('sampleId')[0].innerHTML = event.clone.getElementsByClassName('sampleId')[0].innerHTML
       event.explicitOriginalTarget.getElementsByClassName('name')[0].innerHTML = event.clone.getElementsByClassName('name')[0].innerHTML
       event.explicitOriginalTarget.getElementsByClassName('species')[0].innerHTML = event.clone.getElementsByClassName('species')[0].innerHTML
-    
     }
   }
 }
 
 </script>
 
-<style></style>
+<style>
+
+</style>

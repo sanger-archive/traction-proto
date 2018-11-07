@@ -32,6 +32,8 @@ export default {
         status: this.status
       }
     }
+  },
+  methods: {
   }
 }
 
